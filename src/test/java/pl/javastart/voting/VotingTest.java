@@ -30,10 +30,10 @@ public class VotingTest {
     void shouldWorkForSimpleCase() {
         // given
         List<String> voters = Arrays.asList("A", "B");
-        provideInput("z", "p");
+        Scanner scanner = provideInput("z", "p");
 
         // when
-        VotingResult votingResult = voting.executeVoting(voters, provideInput());
+        VotingResult votingResult = voting.executeVoting(voters, scanner);
         votingResult.printResults();
 
         // then
@@ -49,7 +49,7 @@ public class VotingTest {
         Scanner scanner = provideInput("z", "p", "w");
 
         // when
-        VotingResult votingResult = voting.executeVoting(voters, provideInput());
+        VotingResult votingResult = voting.executeVoting(voters, scanner);
         votingResult.printResults();
 
         // then
@@ -82,10 +82,10 @@ public class VotingTest {
     void shouldWorkForTwoVotingsSimpleCase() {
         // given
         List<String> voters = Arrays.asList("A", "B");
-        provideInput("z", "p");
+        Scanner scanner1 = provideInput("z", "p");
 
         // when
-        VotingResult votingResult = voting.executeVoting(voters, provideInput());
+        VotingResult votingResult = voting.executeVoting(voters, scanner1);
         votingResult.printResults();
 
         // then
@@ -96,10 +96,11 @@ public class VotingTest {
         // 2nd voting
         // given
         List<String> voters2 = Arrays.asList("A", "B");
-        provideInput("z", "z");
+        Scanner scanner2 = provideInput("z", "z");
 
         // when
-        voting.executeVoting(voters2, provideInput());
+        VotingResult votingResult2 = voting.executeVoting(voters2, scanner2);
+        votingResult2.printResults();
 
         // then
         assertThat(outContent.toString()).contains("Głosów za: 100");
