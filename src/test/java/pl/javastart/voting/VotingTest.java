@@ -33,7 +33,8 @@ public class VotingTest {
         provideInput("z", "p");
 
         // when
-        voting.executeVoting(voters, provideInput());
+        VotingResult votingResult = voting.executeVoting(voters, provideInput());
+        votingResult.printResults();
 
         // then
         assertThat(outContent.toString()).contains("Głosów za: 50");
@@ -48,7 +49,8 @@ public class VotingTest {
         Scanner scanner = provideInput("z", "p", "w");
 
         // when
-        voting.executeVoting(voters, scanner);
+        VotingResult votingResult = voting.executeVoting(voters, provideInput());
+        votingResult.printResults();
 
         // then
         assertThat(outContent.toString()).satisfiesAnyOf(
@@ -83,7 +85,8 @@ public class VotingTest {
         provideInput("z", "p");
 
         // when
-        voting.executeVoting(voters, provideInput());
+        VotingResult votingResult = voting.executeVoting(voters, provideInput());
+        votingResult.printResults();
 
         // then
         assertThat(outContent.toString()).contains("Głosów za: 50");
