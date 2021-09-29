@@ -108,6 +108,51 @@ public class VotingTest {
         assertThat(outContent.toString()).contains("Wstrzymało się: 0");
     }
 
+
+    @Test
+    void shouldPrintVotingResultForSingleVoterFor() {
+        // given
+        List<String> voters = Arrays.asList("Jan Kowalski", "Zbigniew Siobro");
+        Scanner scanner1 = provideInput("p", "z");
+
+        // when
+        VotingResult votingResult = voting.executeVoting(voters, scanner1);
+        votingResult.printVoteForVoter("Zbigniew Siobro");
+
+        // then
+        assertThat(outContent.toString()).contains("Zbigniew Siobro: ZA");
+    }
+
+
+    @Test
+    void shouldPrintVotingResultForSingleVoterAgainst() {
+        // given
+        List<String> voters = Arrays.asList("Jak Kowalski", "Zbigniew Siobro");
+        Scanner scanner1 = provideInput("z", "p");
+
+        // when
+        VotingResult votingResult = voting.executeVoting(voters, scanner1);
+        votingResult.printVoteForVoter("Zbigniew Siobro");
+
+        // then
+        assertThat(outContent.toString()).contains("Zbigniew Siobro: PRZECIW");
+    }
+
+
+    @Test
+    void shouldPrintVotingResultForSingleVoterAbstain() {
+        // given
+        List<String> voters = Arrays.asList("Jan Kowalski", "Zbigniew Siobro");
+        Scanner scanner1 = provideInput("z", "w");
+
+        // when
+        VotingResult votingResult = voting.executeVoting(voters, scanner1);
+        votingResult.printVoteForVoter("Zbigniew Siobro");
+
+        // then
+        assertThat(outContent.toString()).contains("Zbigniew Siobro: WSTRZYMAŁ SIĘ");
+    }
+
     private Scanner provideInput(String... lines) {
         String input = String.join("\r\n", lines);
 
