@@ -9,7 +9,7 @@ public class Voting {
     public static void main(String[] args) {
         List<String> voters = new ArrayList<>();
 
-        // możesz dowolie dodawać / usuwać dane testowe
+        // możesz dowolnie dodawać / usuwać dane testowe
         voters.add("Jan Kowalski");
         voters.add("Zigniew Siobro");
         voters.add("Zbyszek Stonoga");
