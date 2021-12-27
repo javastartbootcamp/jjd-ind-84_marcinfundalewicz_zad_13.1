@@ -22,13 +22,13 @@ public class Voting {
     }
 
     /**
-     * Uzupełnij metodę metodę, ale nie zmieniaj jej sygnatury! (tego co przyjmuje i zwraca).
+     * Uzupełnij metodę metodę, ale nie zmieniaj jej sygnatury! (typu tego, co przyjmuje i zwraca).
      * do wczytywania danych od użytkownika użyj scannera z parametru
      * Metoda powinna pobrać głos dla każdego przekazanego głosującego i zapisać wyniki głosowania do VotingResult
      */
     VotingResult executeVoting(List<String> voters, Scanner scanner) {
 
-        return null;
+        return null; // to możesz (a nawet powinieneś/powinnaś) zmienić :)
     }
 
 }
