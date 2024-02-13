@@ -8,6 +8,23 @@ public class Voting {
 
     public static void main(String[] args) {
         List<String> voters = new ArrayList<>();
+        //Pytanie do tego zadania:
+        //Nie za bardzo rozumiem dlaczego w ponizszej metodzie jest tak wazna kolejnosc ifow
+        //jezeli zamienie miejscami pierwszego ifa z trzecim to dlaczego dostaje blad skoro wtedy warunek w ifie nie
+        //powinien sie wykonac i program powinien wskoczyc do kolejnego ifa ?
+//        public void printResults() {
+//            int counterFor = 0;
+//            int counterAgainst = 0;
+//            int counterHold = 0;
+//            for (Vote vote : votes) {
+//                if (vote.getVote() == null) {
+//                    counterHold++;
+//                } else if (!vote.getVote()) {
+//                    counterAgainst++;
+//                } else if (vote.getVote()) {
+//                    counterFor++;
+//                }
+//            }
 
         // możesz dowolnie dodawać / usuwać dane testowe
         voters.add("Jan Kowalski");
@@ -35,15 +52,14 @@ public class Voting {
         for (int i = 0; i < voters.size(); i++) {
             System.out.println("Jak glosuje " + voters.get(i) + " ? (z - za, p - przeciw, w - wstrzymanie sie)");
             String decision = scanner.nextLine();
-            if (decision.equals("z")) {
-                votingResult.add(new Vote(voters.get(i), true));
-            } else if (decision.equals("p")) {
-                votingResult.add(new Vote(voters.get(i), false));
-            } else if (decision.equals("w")) {
-                votingResult.add(new Vote(voters.get(i), null));
-            } else {
-                System.out.println("Głos nieważny. Proszę ponownie zagłosować.");
-                i--;
+            switch (decision) {
+                case "z" -> votingResult.add(new Vote(voters.get(i), true));
+                case "p" -> votingResult.add(new Vote(voters.get(i), false));
+                case "w" -> votingResult.add(new Vote(voters.get(i), null));
+                default -> {
+                    System.out.println("Głos nieważny. Proszę ponownie zagłosować.");
+                    i--;
+                }
             }
         }
         return votingResult;

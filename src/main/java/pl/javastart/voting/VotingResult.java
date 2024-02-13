@@ -28,18 +28,18 @@ public class VotingResult {
         int counterFor = 0;
         int counterAgainst = 0;
         int counterHold = 0;
-        for (int i = 0; i < votes.size(); i++) {
-            if (votes.get(i).getVote()) {
-                counterFor++;
-            } else if (!votes.get(i).getVote()) {
-                counterAgainst++;
-            } else if (votes.get(i).getVote() == null) {
+        for (Vote vote : votes) {
+            if (vote.getVote() == null) {
                 counterHold++;
+            } else if (!vote.getVote()) {
+                counterAgainst++;
+            } else if (vote.getVote()) {
+                counterFor++;
             }
         }
-        System.out.printf("Wstrzymało się: %.2f %% \n", ((double) (counterHold) / votes.size() * 100));
-        System.out.printf("Głosów za: %.2f %% \n", ((double) (counterFor) / votes.size() * 100));
-        System.out.printf("Głosów przeciw: %.2f %% \n", ((double) (counterAgainst) / votes.size() * 100));
+        System.out.printf("Wstrzymało się: %.2f%% \n", ((double) (counterHold) / votes.size() * 100));
+        System.out.printf("Głosów za: %.2f%% \n", ((double) (counterFor) / votes.size() * 100));
+        System.out.printf("Głosów przeciw: %.2f%% \n", ((double) (counterAgainst) / votes.size() * 100));
     }
 
     /**
@@ -49,16 +49,14 @@ public class VotingResult {
      * Nie zmieniaj sygnatury tej metody!
      */
     public void printVoteForVoter(String voterName) {
-        for (int i = 0; i < votes.size(); i++) {
-            if (votes.get(i).getVoter().equals(voterName)) {
-                if (votes.get(i).getVote()) {
-                    System.out.println(voterName + ": ZA");
-                }
-                if (!votes.get(i).getVote()) {
-                    System.out.println(voterName + ": PRZECIW");
-                }
-                if (votes.get(i).getVote() == null) {
+        for (Vote vote : votes) {
+            if (vote.getVoter().equals(voterName)) {
+                if (vote.getVote() == null) {
                     System.out.println(voterName + ": WSTRZYMAŁ SIĘ");
+                } else if (!vote.getVote()) {
+                    System.out.println(voterName + ": PRZECIW");
+                } else if (vote.getVote()) {
+                    System.out.println(voterName + ": ZA");
                 }
             }
         }
