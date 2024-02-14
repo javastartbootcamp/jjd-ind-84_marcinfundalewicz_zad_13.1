@@ -17,8 +17,12 @@ public class Voting {
         Voting voting = new Voting();
 
         VotingResult votingResult = voting.executeVoting(voters, new Scanner(System.in));
+
         votingResult.printResults();
+        System.out.println();
+        votingResult.printVoteForVoter("Jan Kowalski");
         votingResult.printVoteForVoter("Zigniew Siobro");
+        votingResult.printVoteForVoter("Zbyszek Stonoga");
     }
 
     /**
@@ -27,8 +31,20 @@ public class Voting {
      * Metoda powinna pobrać głos dla każdego przekazanego głosującego i zapisać wyniki głosowania do VotingResult
      */
     VotingResult executeVoting(List<String> voters, Scanner scanner) {
-
-        return null; // to możesz (a nawet powinieneś/powinnaś) zmienić :)
+        VotingResult votingResult = new VotingResult();
+        for (int i = 0; i < voters.size(); i++) {
+            System.out.println("Jak glosuje " + voters.get(i) + " ? (z - za, p - przeciw, w - wstrzymanie sie)");
+            String decision = scanner.nextLine();
+            switch (decision) {
+                case "z" -> votingResult.add(new Vote(voters.get(i), true));
+                case "p" -> votingResult.add(new Vote(voters.get(i), false));
+                case "w" -> votingResult.add(new Vote(voters.get(i), null));
+                default -> {
+                    System.out.println("Głos nieważny. Proszę ponownie zagłosować.");
+                    i--;
+                }
+            }
+        }
+        return votingResult;
     }
-
 }
