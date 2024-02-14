@@ -8,23 +8,6 @@ public class Voting {
 
     public static void main(String[] args) {
         List<String> voters = new ArrayList<>();
-        //Pytanie do tego zadania:
-        //Nie za bardzo rozumiem dlaczego w ponizszej metodzie jest tak wazna kolejnosc ifow
-        //jezeli zamienie miejscami pierwszego ifa z trzecim to dlaczego dostaje blad skoro wtedy warunek w ifie nie
-        //powinien sie wykonac i program powinien wskoczyc do kolejnego ifa ?
-//        public void printResults() {
-//            int counterFor = 0;
-//            int counterAgainst = 0;
-//            int counterHold = 0;
-//            for (Vote vote : votes) {
-//                if (vote.getVote() == null) {
-//                    counterHold++;
-//                } else if (!vote.getVote()) {
-//                    counterAgainst++;
-//                } else if (vote.getVote()) {
-//                    counterFor++;
-//                }
-//            }
 
         // możesz dowolnie dodawać / usuwać dane testowe
         voters.add("Jan Kowalski");

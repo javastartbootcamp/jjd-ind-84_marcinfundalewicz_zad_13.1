@@ -7,7 +7,7 @@ import java.util.List;
  * Możesz dodać kolejne metody i pola do klasy. Nie zmieniaj istniejących metod.
  */
 public class VotingResult {
-    List<Vote> votes;
+    private  List<Vote> votes;
 
     public VotingResult() {
         votes = new ArrayList<>();
@@ -33,7 +33,7 @@ public class VotingResult {
                 counterHold++;
             } else if (!vote.getVote()) {
                 counterAgainst++;
-            } else if (vote.getVote()) {
+            } else {
                 counterFor++;
             }
         }
@@ -55,7 +55,7 @@ public class VotingResult {
                     System.out.println(voterName + ": WSTRZYMAŁ SIĘ");
                 } else if (!vote.getVote()) {
                     System.out.println(voterName + ": PRZECIW");
-                } else if (vote.getVote()) {
+                } else {
                     System.out.println(voterName + ": ZA");
                 }
             }
